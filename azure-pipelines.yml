@@ -2,8 +2,9 @@ trigger:
 - main # Pipeline is triggered when changes are pushed to the 'main' branch
 
 pool:
-  name: 'self-hosted' # Use 'self-hosted' if you're using your own agent
-  # If you're using Microsoft-hosted agent, replace with 'vmImage: windows-latest'
+  name: 'Default' 
+  demands:
+    - Agent.Name -equals HELIPAD
 
 steps:
 - task: UseDotNet@2

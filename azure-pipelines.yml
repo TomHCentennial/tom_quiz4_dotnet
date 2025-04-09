@@ -12,7 +12,11 @@ steps:
     packageType: 'sdk'
     version: '6.0.x' # Ensure this matches your .NET version
 
-- script: dotnet restore
+
+- script: cd ASPDOTNETQUIZ4
+  displayName: 'Navigate to project directory'
+
+- script: dotnet restore ASPDOTNETQUIZ4/ASPDOTNETQUIZ4.csproj
   displayName: 'Restore dependencies'
 
 - script: dotnet build

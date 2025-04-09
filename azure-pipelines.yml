@@ -1,0 +1,27 @@
+trigger:
+- main # Pipeline is triggered when changes are pushed to the 'main' branch
+
+pool:
+  name: 'self-hosted' # Use 'self-hosted' if you're using your own agent
+  # If you're using Microsoft-hosted agent, replace with 'vmImage: windows-latest'
+
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.0.x' # Ensure this matches your .NET version
+
+- script: dotnet restore
+  displayName: 'Restore dependencies'
+
+- script: dotnet build
+  displayName: 'Build project'
+
+- script: dotnet publish -c Release -o $(Build.ArtifactStagingDirectory)
+  displayName: 'Publish artifacts'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)'
+    artifact: 'dotnet-app'
+  displayName: 'Publish pipeline artifact'

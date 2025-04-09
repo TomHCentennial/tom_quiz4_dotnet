@@ -19,10 +19,10 @@ steps:
 - script: dotnet restore ASPDOTNETQUIZ4/ASPDOTNETQUIZ4.csproj
   displayName: 'Restore dependencies'
 
-- script: dotnet build
+- script: dotnet build ASPDOTNETQUIZ4/ASPDOTNETQUIZ4.csproj
   displayName: 'Build project'
 
-- script: dotnet publish -c Release -o $(Build.ArtifactStagingDirectory)
+- script: dotnet publish ASPDOTNETQUIZ4/ASPDOTNETQUIZ4.csproj -c Release -o $(Build.ArtifactStagingDirectory)
   displayName: 'Publish artifacts'
 
 - task: PublishPipelineArtifact@1

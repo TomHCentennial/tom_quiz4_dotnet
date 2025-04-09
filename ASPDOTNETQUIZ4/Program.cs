@@ -23,4 +23,6 @@ app.MapStaticAssets();
 app.MapRazorPages()
    .WithStaticAssets();
 
+Console.WriteLine("Database access has already been done on April 1, 2025 by Tom.");
+
 app.Run();

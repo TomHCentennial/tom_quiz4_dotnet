@@ -19,9 +19,8 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapStaticAssets();
-app.MapRazorPages()
-   .WithStaticAssets();
+// Removed invalid methods: MapStaticAssets and WithStaticAssets
+app.MapRazorPages();
 
 Console.WriteLine("Database access has already been done on April 1, 2025 by Tom.");
 
